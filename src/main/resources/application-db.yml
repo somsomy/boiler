@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bulletin_board
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true                # sql 쿼리 콘솔 출력
+    properties:
+      hibernate:
+        format_sql: true          # sql 보기좋게 출력
+    generate-ddl: true           # @Entity 어노테이션 기준으로 DDL 작업 방지(false)
+    hibernate:
+      ddl-auto: update
