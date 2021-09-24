@@ -1,6 +1,6 @@
 package com.example.boiler.domain.member.service;
 
-import com.example.boiler.domain.member.dto.MemberDto;
+import com.example.boiler.domain.member.dto.CreateMemberDto;
 import com.example.boiler.domain.member.model.entity.Member;
 import com.example.boiler.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class MemberService {
 
   private final MemberRepository memberRepository;
 
-  public void save(MemberDto memberDto) {
+  public void save(CreateMemberDto memberDto) {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     memberDto.setPassword(encoder.encode(memberDto.getPassword()));
     Member m = memberRepository.save(memberDto.toEntity());
