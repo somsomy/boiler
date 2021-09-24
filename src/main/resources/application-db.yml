@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bulletin_board
+    url: jdbc:postgresql://localhost:5432/test
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -12,4 +12,4 @@ spring:
         format_sql: true          # sql 보기좋게 출력
     generate-ddl: true           # @Entity 어노테이션 기준으로 DDL 작업 방지(false)
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
