@@ -1,18 +1,19 @@
 package com.example.boiler.domain.member.model.entity;
 
-import com.example.boiler.domain.member.dto.MemberDto;
 import com.example.boiler.domain.member.model.Role;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
-@Builder
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
+@DynamicInsert
 public class Member extends BaseTimeEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,21 +22,23 @@ public class Member extends BaseTimeEntity {
   @NotNull
   @Column(unique = true)
   private String userId;
+  @NotNull
   private String password;
   @NotNull
   @Column(unique = true)
   private String name;
-  @NotNull
+  @Column(nullable = false) @ColumnDefault("'USER'")
   @Enumerated(EnumType.STRING)
   private Role role;
 
-  public MemberDto toDto() {
-    return MemberDto.builder()
-        .memberId(id)
-        .userId(userId)
-        .password(password)
-        .name(name)
-        .role(role)
-        .build();
+  @Builder
+  Member(LocalDateTime createAt, LocalDateTime updateAt,
+         Long id, String userId, String password, String name, Role role) {
+    super(createAt, updateAt);
+    this.id = id;
+    this.userId = userId;
+    this.password = password;
+    this.name = name;
+    this.role = role;
   }
 }
