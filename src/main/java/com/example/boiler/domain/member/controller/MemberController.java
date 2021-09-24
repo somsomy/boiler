@@ -1,5 +1,6 @@
 package com.example.boiler.domain.member.controller;
 
+import com.example.boiler.common.ResponseDto;
 import com.example.boiler.domain.member.dto.CreateMemberDto;
 import com.example.boiler.domain.member.service.MemberService;
 import io.swagger.annotations.Api;
@@ -25,6 +26,6 @@ public class MemberController {
   public ResponseEntity<?> createMember(@RequestBody CreateMemberDto memberDto) {
     log.info("memberDto = {}", memberDto);
     memberService.save(memberDto);
-    return new ResponseEntity<>(HttpStatus.OK);
+    return ResponseEntity.ok(ResponseDto.OK);
   }
 }
