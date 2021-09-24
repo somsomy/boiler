@@ -32,9 +32,9 @@ public class Member extends BaseTimeEntity {
   private Role role;
 
   @Builder
-  Member(LocalDateTime createAt, LocalDateTime updateAt,
+  Member(LocalDateTime createdAt, LocalDateTime updatedAt,
          Long id, String userId, String password, String name, Role role) {
-    super(createAt, updateAt);
+    super(createdAt, updatedAt);
     this.id = id;
     this.userId = userId;
     this.password = password;
